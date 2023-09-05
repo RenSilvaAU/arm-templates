@@ -67,13 +67,13 @@
         "description": "Specifies the name of the deployment."
       }
     },
-    // "environment": {
-    //   "type": "string",
-    //   "defaultValue": "[format('aml-env-{0}', last(split(resourceGroup().id, '/')))]",
-    //   "metadata": {
-    //     "description": "Specifies the name of the environment."
-    //   }
-    // },
+    "environment": {
+      "type": "string",
+      "defaultValue": "dev",
+      "metadata": {
+        "description": "Specifies the name of the environment."
+      }
+    },
     "location": {
       "type": "string",
       "defaultValue": "francecentral",
@@ -123,12 +123,12 @@
   },
   "variables": {
     "tenantId": "[subscription().tenantId]",
-    "storageAccountName": "[format('st{0}', parameters('name'))]",
-    "keyVaultName": "[format('kv-{0}', parameters('name'))]",
-    "applicationInsightsName": "[format('appi-{0}', parameters('name'))]",
-    "workspaceName": "[format('amlw-{0}', parameters('name'))]",
-    "aoaiAccountName":"[format('aoai-{0}', parameters('name'))]",
-    "acsAccountName":"[format('acs-{0}', parameters('name'))]",
+    "storageAccountName": "[format('st{0}{1}', parameters('name'), parameters('environment'))]",
+    "keyVaultName": "[format('kv-{0}-{1}', parameters('name'), parameters('environment'))]",
+    "applicationInsightsName": "[format('appi-{0}-{1}', parameters('name'), parameters('environment'))]",
+    "workspaceName": "[format('amlw-{0}-{1}', parameters('name'), parameters('environment'))]",
+    "aoaiAccountName":"[format('aoai-{0}-{1}', parameters('name'), parameters('environment'))]",
+    "acsAccountName":"[format('acs-{0}-{1}', parameters('name'), parameters('environment'))]",
     "storageAccountId": "[resourceId('Microsoft.Storage/storageAccounts', variables('storageAccountName'))]",
     "keyVaultId": "[resourceId('Microsoft.KeyVault/vaults', variables('keyVaultName'))]",
     "applicationInsightId": "[resourceId('Microsoft.Insights/components', variables('applicationInsightsName'))]"
