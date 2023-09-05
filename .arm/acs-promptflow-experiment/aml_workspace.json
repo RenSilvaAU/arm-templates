@@ -62,7 +62,7 @@
     },
     "name": {
       "type": "string",
-      "defaultValue": "[format('aml-{0}', last(split(resourceGroup().id, '/')))]",
+      "defaultValue": "[last(split(resourceGroup().id, '/'))]",
       "metadata": {
         "description": "Specifies the name of the deployment."
       }
