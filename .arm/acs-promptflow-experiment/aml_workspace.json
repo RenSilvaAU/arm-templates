@@ -62,14 +62,14 @@
     },
     "name": {
       "type": "string",
-      "defaultValue": "[format('aml-{0}', uniqueString(resourceGroup().id))]",
+      "defaultValue": "[concat('aml-{0}', uniqueString(resourceGroup().id))]",
       "metadata": {
         "description": "Specifies the name of the deployment."
       }
     },
     "environment": {
       "type": "string",
-      "defaultValue": "[format('aml-env-{0}', uniqueString(resourceGroup().id))]",
+      "defaultValue": "[concat('aml-env-{0}', uniqueString(resourceGroup().id))]",
       "metadata": {
         "description": "Specifies the name of the environment."
       }
